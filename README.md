@@ -1,6 +1,6 @@
 # Resume Review Assistant
 
-A command-line tool that helps a human reviewer summarize a resume and locate resume evidence related to requirements in a job description. It does not rank, recommend, shortlist, or reject candidates.
+A command-line tool and Streamlit app that help a human reviewer summarize a resume and locate resume evidence related to requirements in a job description. They do not rank, recommend, shortlist, or reject candidates.
 
 ## Requirements
 
@@ -19,7 +19,24 @@ cp .env.example .env
 
 Add your key to `.env`. The default model is `gpt-4o-mini`; set `OPENAI_MODEL` there to use another supported OpenAI chat model.
 
-## Use
+## Streamlit UI
+
+Start the app locally:
+
+```bash
+streamlit run app.py
+```
+
+For Streamlit Community Cloud, connect this GitHub repository, select the `main` branch and `app.py` as the app file, then add `OPENAI_API_KEY` in the app's Secrets settings:
+
+```toml
+OPENAI_API_KEY = "your-key"
+OPENAI_MODEL = "gpt-4o-mini"
+```
+
+Never commit a real API key. Streamlit Cloud installs dependencies from `requirements.txt`.
+
+## CLI
 
 ```bash
 resume-review --resume ./resume.pdf --job-description ./job-description.txt
@@ -46,6 +63,7 @@ src/resume_review/
   documents.py
   models.py
   workflow.py
+app.py
 tests/
 ```
 
